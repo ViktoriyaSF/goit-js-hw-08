@@ -19,6 +19,24 @@ function formInput() {
 
 function formOnSubmit(event) {
   event.preventDafualt();
-  refs.form.resert();
+  refs.form.reset();
   localStorage.removeItem('feedback-form-state');
+}
+
+const loadForm = key => {
+  try {
+    const getForm = localStorage.getItem(key);
+    return getForm === '' ? undefined : JSON.parse(getForm);
+  } catch (error) {
+    console.error('error: ', error);
+  }
+};
+
+const storageAllForm = loadForm('feedback-form-state');
+
+// Перевірка стану сховища.
+// Якщо  в сховищі є збережені дані - заповнити ними поля форми.
+if (storageAllForm) {
+  refs.email.value = storageAllForm.email;
+  refs.message.value = storageAllForm.message;
 }
