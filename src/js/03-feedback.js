@@ -22,6 +22,7 @@ function formOnSubmit(event) {
   if (refs.email.value === '' || refs.message.value === '') {
     return alert('Будь ласка, заповніть усі поля!');
   }
+  console.log({ email: refs.email.value, message: refs.message.value });
   refs.form.reset();
   localStorage.removeItem('feedback-form-state');
 }
