@@ -24,5 +24,5 @@ function timeStop() {
   // console.log(localStorage.getItem('videoplayer-current-time'));
 }
 
-// Встановює поточну позицію відтворення в секундах (час коли зупинився)
-player.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
+// Встановює поточну позицію відтворення в секундах (час коли зупинився або для валідності нуль)
+player.setCurrentTime(localStorage.getItem('videoplayer-current-time') || 0);

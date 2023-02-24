@@ -18,7 +18,10 @@ function formInput() {
 }
 
 function formOnSubmit(event) {
-  event.preventDafualt();
+  event.preventDefault();
+  if (refs.email.value === '' || refs.message.value === '') {
+    return alert('Будь ласка, заповніть усі поля!');
+  }
   refs.form.reset();
   localStorage.removeItem('feedback-form-state');
 }
