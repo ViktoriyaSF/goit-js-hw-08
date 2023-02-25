@@ -1,5 +1,7 @@
 import Player from '@vimeo/player';
 import throttle from 'lodash.throttle';
+// для зменьшення оимлок сформувала загальну констанку TIME_VIDEO замість 'videoplayer-current-time'
+const TIME_VIDEO = 'videoplayer-current-time';
 
 const iframe = document.querySelector('iframe');
 // console.log(iframe);
@@ -18,11 +20,11 @@ function timeStop() {
   // Отримайте поточну позицію відтворення за секунди.
   player.getCurrentTime().then(function (seconds) {
     //локалье сховище ств новий час
-    localStorage.setItem('videoplayer-current-time', seconds);
+    localStorage.setItem(TIME_VIDEO, seconds);
   });
   //  вивила фактичний час зупинки
   // console.log(localStorage.getItem('videoplayer-current-time'));
 }
 
 // Встановює поточну позицію відтворення в секундах (час коли зупинився або для валідності нуль)
-player.setCurrentTime(localStorage.getItem('videoplayer-current-time') || 0);
+player.setCurrentTime(localStorage.getItem(TIME_VIDEO) || 0);
