@@ -36,7 +36,7 @@ function formOnSubmit(event) {
 }
 
 function populateTextarea() {
-  const storageAllForm = localStorage.getItem(KEY_FORM);
+  const storageAllForm = JSON.parse(localStorage.getItem(KEY_FORM));
   // storageAllForm якщо пуста видає null, тобто false
   if (storageAllForm) {
     refs.email.value = storageAllForm.email;
